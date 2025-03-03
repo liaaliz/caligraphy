@@ -14,18 +14,20 @@
 script = ExtResource("1_by4kb")
 brush_pivot = NodePath("pivot")
 
-[node name="PlayerHead" type="MeshInstance2D" parent="PlayerBus/Body"]
+[node name="Sprite" type="MeshInstance2D" parent="PlayerBus/Body"]
+position = Vector2(-6, 0)
 scale = Vector2(18, 18)
 mesh = SubResource("BoxMesh_ng4op")
+metadata/_edit_group_ = true
 
-[node name="PlayerLegs" type="MeshInstance2D" parent="PlayerBus/Body"]
-position = Vector2(6, 9)
-scale = Vector2(5.96, 18)
+[node name="Leg1" type="MeshInstance2D" parent="PlayerBus/Body/Sprite"]
+position = Vector2(0.333333, 0.5)
+scale = Vector2(0.331111, 1)
 mesh = SubResource("BoxMesh_ng4op")
 
-[node name="PlayerLegs2" type="MeshInstance2D" parent="PlayerBus/Body"]
-position = Vector2(-6, 9)
-scale = Vector2(5.96, 18)
+[node name="Leg2" type="MeshInstance2D" parent="PlayerBus/Body/Sprite"]
+position = Vector2(-0.333333, 0.5)
+scale = Vector2(0.331111, 1)
 mesh = SubResource("BoxMesh_ng4op")
 
 [node name="pivot" type="Node2D" parent="PlayerBus/Body"]
@@ -39,7 +41,6 @@ scale = Vector2(122, 5)
 
 [node name="Brush" type="MeshInstance2D" parent="PlayerBus/Body/pivot/pivot"]
 position = Vector2(-0.5, 1.06656e-06)
-scale = Vector2(1, 1)
 mesh = SubResource("BoxMesh_f7ycj")
 
 [node name="Camera2D" type="Camera2D" parent="."]
