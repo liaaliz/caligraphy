@@ -1,0 +1,41 @@
+[gd_scene load_steps=4 format=3 uid="uid://btnola12cpjxf"]
+
+[ext_resource type="Script" path="res://MovePlayer.gd" id="1_by4kb"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_ng4op"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_f7ycj"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="PlayerBus" type="Node" parent="."]
+
+[node name="Body" type="CharacterBody2D" parent="PlayerBus"]
+script = ExtResource("1_by4kb")
+
+[node name="PlayerHead" type="MeshInstance2D" parent="PlayerBus/Body"]
+scale = Vector2(18, 18)
+mesh = SubResource("BoxMesh_ng4op")
+
+[node name="PlayerLegs" type="MeshInstance2D" parent="PlayerBus/Body"]
+position = Vector2(6, 9)
+scale = Vector2(5.96, 18)
+mesh = SubResource("BoxMesh_ng4op")
+
+[node name="PlayerLegs2" type="MeshInstance2D" parent="PlayerBus/Body"]
+position = Vector2(-6, 9)
+scale = Vector2(5.96, 18)
+mesh = SubResource("BoxMesh_ng4op")
+
+[node name="Node2D" type="Node2D" parent="PlayerBus/Body"]
+
+[node name="Brush" type="MeshInstance2D" parent="PlayerBus/Body/Node2D"]
+position = Vector2(31, -21)
+rotation = -0.148353
+scale = Vector2(122, 5)
+mesh = SubResource("BoxMesh_f7ycj")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+size = Vector2i(640, 360)
+
+[node name="Camera2D" type="Camera2D" parent="SubViewport"]
