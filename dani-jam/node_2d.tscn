@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://btnola12cpjxf"]
 
 [ext_resource type="Script" path="res://MovePlayer.gd" id="1_by4kb"]
-[ext_resource type="Resource" uid="uid://cpgrabjd6np5x" path="res://PlayerResource.tres" id="2_yylqs"]
+[ext_resource type="Resource" path="res://PlayerResource.tres" id="2_yylqs"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_ng4op"]
 

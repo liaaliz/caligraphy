@@ -8,11 +8,11 @@ var direction : Vector2
 @export var ink_meter : int = 100
 
 func _ready() -> void:
-  player_resource.on_experience_points_change.connect(handle_experience_points_change)
+  player_resource.on_experience_change.connect(handle_experience_change)
 
 func _unhandled_input(e: InputEvent) -> void:
   if Input.is_action_pressed("q"):
-    player_resource.on_experience_points_change.emit()
+    player_resource.on_experience_change.emit()
   
   if Input.is_action_pressed("w"):
     ink_meter += 10
@@ -60,7 +60,7 @@ func handle_level_up() -> void:
   player_resource.level += 1
   player_resource.experience_points = 0
 
-func handle_experience_points_change() -> void:
+func handle_experience_change() -> void:
   player_resource.experience_points += 1
   if player_resource.experience_points >= 100:
     handle_level_up()
@@ -68,5 +68,4 @@ func handle_experience_points_change() -> void:
 func handle_ink_meter_change() -> void:
   ink_meter = clamp(ink_meter, 0, 100)
   if ink_meter <= 0:
-    # Handle player death
     queue_free()

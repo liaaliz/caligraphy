@@ -1,0 +1,29 @@
+[gd_scene load_steps=2 format=3 uid="uid://dck7vx3s7d2rv"]
+
+[ext_resource type="FontFile" uid="uid://doyq07iuismpl" path="res://FiraCode-VariableFont_wght.ttf" id="1_24l71"]
+
+[node name="EndMenu" type="CanvasLayer"]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control2" type="RichTextLabel" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.034
+anchor_top = 0.228
+anchor_right = 0.966
+anchor_bottom = 0.772
+offset_left = -0.168003
+offset_top = 0.255997
+offset_right = 0.167969
+offset_bottom = -0.256012
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/normal_font = ExtResource("1_24l71")
+bbcode_enabled = true
