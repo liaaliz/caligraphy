@@ -1,0 +1,49 @@
+[gd_scene load_steps=6 format=3 uid="uid://drma5gn1cnf46"]
+
+[ext_resource type="Script" path="res://code/MovePlayer.gd" id="1_8dhmy"]
+[ext_resource type="Resource" uid="uid://drm5bfoqbbcvv" path="res://code/resources/PlayeResource.tres" id="2_62lcy"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_ng4op"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_f7ycj"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lbb7e"]
+
+[node name="PlayerBus" type="Node"]
+
+[node name="Player" type="CharacterBody2D" parent="." node_paths=PackedStringArray("brush_pivot")]
+script = ExtResource("1_8dhmy")
+brush_pivot = NodePath("pivot")
+player_resource = ExtResource("2_62lcy")
+
+[node name="Sprite" type="MeshInstance2D" parent="Player"]
+scale = Vector2(18, 18)
+mesh = SubResource("BoxMesh_ng4op")
+metadata/_edit_group_ = true
+
+[node name="Leg1" type="MeshInstance2D" parent="Player/Sprite"]
+position = Vector2(0.333333, 0.5)
+scale = Vector2(0.331111, 1)
+mesh = SubResource("BoxMesh_ng4op")
+
+[node name="Leg2" type="MeshInstance2D" parent="Player/Sprite"]
+position = Vector2(-0.333333, 0.5)
+scale = Vector2(0.331111, 1)
+mesh = SubResource("BoxMesh_ng4op")
+
+[node name="pivot" type="Node2D" parent="Player"]
+position = Vector2(4, 0)
+rotation = 1.5708
+
+[node name="pivot" type="Node2D" parent="Player/pivot"]
+modulate = Color(0, 1, 1, 1)
+position = Vector2(4, -1.4782e-05)
+rotation = 3.14159
+scale = Vector2(122, 5)
+
+[node name="Brush" type="MeshInstance2D" parent="Player/pivot/pivot"]
+position = Vector2(-0.5, 1.06656e-06)
+mesh = SubResource("BoxMesh_f7ycj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+shape = SubResource("CircleShape2D_lbb7e")

@@ -1,8 +1,0 @@
-[gd_resource type="Resource" script_class="PlayerResource" load_steps=2 format=3 uid="uid://cpgrabjd6np5x"]
-
-[ext_resource type="Script" path="res://PlayerResource.gd" id="1_thg0q"]
-
-[resource]
-script = ExtResource("1_thg0q")
-level = 1
-experience_points = 0

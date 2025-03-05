@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=3 uid="uid://d4gtwq3wwjhvs"]
+
+[ext_resource type="Script" path="res://code/Projectile.gd" id="1_qbs7b"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ecyce"]
+radius = 4.0
+height = 16.0
+
+[node name="NormalBullet" type="Area2D"]
+script = ExtResource("1_qbs7b")
+speed = 150.0
+
+[node name="Node" type="Node2D" parent="."]
+rotation = 1.5708
+scale = Vector2(0.515, 0.82)
+
+[node name="Polygon2D2" type="Polygon2D" parent="Node"]
+position = Vector2(-1.45519e-11, 20.6)
+rotation = 3.14159
+scale = Vector2(1, -1)
+color = Color(0.384314, 0.270588, 1, 1)
+polygon = PackedVector2Array(-11, 18, -11, -17, -8, -22, -3, -24, 0, -24, 0, -1, -4.9, 1.2, -8.6, 7.9)
+
+[node name="Polygon2D" type="Polygon2D" parent="Node"]
+position = Vector2(0, 20.6)
+color = Color(0.384314, 0.270588, 1, 1)
+polygon = PackedVector2Array(-11, 18, -11, -17, -8, -22, -3, -24, 0, -24, 0, -1.1, -4.9, 1.2, -8.6, 7.9)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-7, 0)
+rotation = -1.5708
+shape = SubResource("CapsuleShape2D_ecyce")

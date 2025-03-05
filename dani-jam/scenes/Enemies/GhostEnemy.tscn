@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://cuww5o57uxtul"]
+
+[ext_resource type="Script" path="res://code/Enemy.gd" id="1_chwfp"]
+[ext_resource type="Resource" uid="uid://dw6qhpl7xgsbu" path="res://code/resources/enemyTypes/GhostType.tres" id="2_2vm6t"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pmnpb"]
+radius = 16.0312
+
+[node name="Ghost" type="CharacterBody2D"]
+script = ExtResource("1_chwfp")
+type = ExtResource("2_2vm6t")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+position = Vector2(-6, -8)
+color = Color(1, 0.397702, 0.329256, 1)
+polygon = PackedVector2Array(3, -18, -5, -13, -3, 3, -10, 11, -20, 13, -10, 25, -26, 36, -7, 28, -2, 26, -3, 17, 3, 18, 8, 15, 12, 11, 23, -4, 20, -18, 11, -20)
+
+[node name="Polygon2D2" type="Polygon2D" parent="."]
+position = Vector2(-6, -8)
+color = Color(0.963468, 0.308429, 0.397784, 1)
+polygon = PackedVector2Array(-7, 8, -10, 11, -20, 13, -10, 25, -26, 36, -7, 28, -2, 26, -6, 19, -6, 19)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(3, -14)
+shape = SubResource("CircleShape2D_pmnpb")

@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://doyq07iuismpl"
-path="res://.godot/imported/FiraCode-VariableFont_wght.ttf-d1af7de2cef79c2e0e9b5352fa1f72ba.fontdata"
+uid="uid://cis33cgi75bkk"
+path="res://.godot/imported/Monego_Nerd_Fixed-Regular.otf-e6e46876380b45c4569d3e8e7a02fdba.fontdata"
 
 [deps]
 
-source_file="res://FiraCode-VariableFont_wght.ttf"
-dest_files=["res://.godot/imported/FiraCode-VariableFont_wght.ttf-d1af7de2cef79c2e0e9b5352fa1f72ba.fontdata"]
+source_file="res://themes/fonts/monego-master/Monego-Nerd-Font/Monego_Nerd_Fixed-Regular.otf"
+dest_files=["res://.godot/imported/Monego_Nerd_Fixed-Regular.otf-e6e46876380b45c4569d3e8e7a02fdba.fontdata"]
 
 [params]
 

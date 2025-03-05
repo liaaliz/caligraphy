@@ -1,0 +1,190 @@
+[gd_scene load_steps=7 format=3 uid="uid://b5qcja11degv3"]
+
+[ext_resource type="FontFile" uid="uid://gbynvip3fg7x" path="res://themes/fonts/cour.ttf" id="1_22yen"]
+[ext_resource type="FontFile" uid="uid://ddf8xwngn31bs" path="res://themes/fonts/courbd.ttf" id="2_i08pn"]
+[ext_resource type="FontFile" uid="uid://bxcgw0pp65rc8" path="res://themes/fonts/monego-master/Monego/Monego-Regular.otf" id="3_pwnj0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o0831"]
+size = Vector2(88.18, 103)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1ois0"]
+size = Vector2(125.455, 103)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p8vfy"]
+size = Vector2(84, 103)
+
+[node name="StartMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TopPart" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.5
+color = Color(0, 0, 0, 1)
+
+[node name="BottomPart" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="MainVBox" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 66.0
+offset_top = 37.0
+offset_right = -66.0
+offset_bottom = -37.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MainVBox"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MainVBox/VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/mono_font = ExtResource("1_22yen")
+theme_override_fonts/bold_font = ExtResource("2_i08pn")
+bbcode_enabled = true
+text = "[b][wave=10][center][font_size=10][shake =100]
+
+    _______ _________ _______  _______ _________
+   (  ____ \\\\__   __/(  ___  )(  ____ )\\__   __/
+| (    \\/   ) (   | (   ) || (    )|   ) (   
+| (_____    | |   | (___) || (____)|   | |   
+(_____  )   | |   |  ___  ||     __)   | |   
+      ) |   | |   | (   ) || (\\ (      | |   
+/\\____) |   | |   | )   ( || ) \\ \\__   | |   
+\\_______)   )_(   |/     \\||/   \\__/   )_(   
+                                             "
+
+[node name="StartSwipe" type="Node2D" parent="MainVBox/VBoxContainer2/RichTextLabel"]
+position = Vector2(423.91, 75.725)
+
+[node name="Start_1" type="Area2D" parent="MainVBox/VBoxContainer2/RichTextLabel/StartSwipe"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MainVBox/VBoxContainer2/RichTextLabel/StartSwipe/Start_1"]
+shape = SubResource("RectangleShape2D_o0831")
+
+[node name="Start_2" type="Area2D" parent="MainVBox/VBoxContainer2/RichTextLabel/StartSwipe"]
+position = Vector2(89, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MainVBox/VBoxContainer2/RichTextLabel/StartSwipe/Start_2"]
+shape = SubResource("RectangleShape2D_o0831")
+
+[node name="Start_3" type="Area2D" parent="MainVBox/VBoxContainer2/RichTextLabel/StartSwipe"]
+position = Vector2(178, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MainVBox/VBoxContainer2/RichTextLabel/StartSwipe/Start_3"]
+shape = SubResource("RectangleShape2D_o0831")
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="MainVBox/VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/bold_font = ExtResource("2_i08pn")
+bbcode_enabled = true
+text = "[b][wave=10][center][font_size=10][shake =100]
+  _______  _______ __________________ _______  _        _______ 
+ (  ___  )(  ____ )\\__   __/\\__   __/(  ___  )( (    /|(  ____ \\
+ | (   ) || (    )|   ) (      ) (   | (   ) ||  \\  ( || (    \\/
+| |   | || (____)|   | |      | |   | |   | ||   \\ | || (_____ 
+ | |   | ||  _____)   | |      | |   | |   | || (\\ \\) |(_____  )
+ | |   | || (         | |      | |   | |   | || | \\   |      ) |
+ | (___) || )         | |   ___) (___| (___) || )  \\  |/\\____) |
+ (_______)|/          )_(   \\_______/(_______)|/    )_)\\_______)
+                                                               "
+
+[node name="OptionsSwipe" type="Node2D" parent="MainVBox/VBoxContainer2/RichTextLabel3"]
+position = Vector2(325, 10)
+
+[node name="OptionsArea" type="Area2D" parent="MainVBox/VBoxContainer2/RichTextLabel3/OptionsSwipe"]
+position = Vector2(63, 52)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MainVBox/VBoxContainer2/RichTextLabel3/OptionsSwipe/OptionsArea"]
+shape = SubResource("RectangleShape2D_1ois0")
+
+[node name="OptionsArea2" type="Area2D" parent="MainVBox/VBoxContainer2/RichTextLabel3/OptionsSwipe"]
+position = Vector2(188, 52)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MainVBox/VBoxContainer2/RichTextLabel3/OptionsSwipe/OptionsArea2"]
+shape = SubResource("RectangleShape2D_1ois0")
+
+[node name="OptionsArea3" type="Area2D" parent="MainVBox/VBoxContainer2/RichTextLabel3/OptionsSwipe"]
+position = Vector2(313, 52)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MainVBox/VBoxContainer2/RichTextLabel3/OptionsSwipe/OptionsArea3"]
+shape = SubResource("RectangleShape2D_1ois0")
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="MainVBox/VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/mono_font = ExtResource("1_22yen")
+theme_override_fonts/bold_font = ExtResource("2_i08pn")
+bbcode_enabled = true
+text = "[b][wave=10][center][font_size=10][shake =100]
+    _______          __________________
+   (  ____ \\|\\     /|\\__   __/\\__   __/
+| (    \\/( \\   / )   ) (      ) (   
+| (__     \\ (_) /    | |      | |   
+|  __)     ) _ (     | |      | |   
+| (       / ( ) \\    | |      | |   
+| (____/\\( /   \\ )___) (___   | |   
+(_______/|/     \\|\\_______/   )_(   
+                                    "
+
+[node name="OptionsSwipe2" type="Node2D" parent="MainVBox/VBoxContainer2/RichTextLabel2"]
+position = Vector2(385, 12)
+
+[node name="OptionsArea" type="Area2D" parent="MainVBox/VBoxContainer2/RichTextLabel2/OptionsSwipe2"]
+position = Vector2(63, 52)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MainVBox/VBoxContainer2/RichTextLabel2/OptionsSwipe2/OptionsArea"]
+position = Vector2(-21, 0)
+shape = SubResource("RectangleShape2D_p8vfy")
+
+[node name="OptionsArea2" type="Area2D" parent="MainVBox/VBoxContainer2/RichTextLabel2/OptionsSwipe2"]
+position = Vector2(126, 52)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MainVBox/VBoxContainer2/RichTextLabel2/OptionsSwipe2/OptionsArea2"]
+shape = SubResource("RectangleShape2D_p8vfy")
+
+[node name="OptionsArea3" type="Area2D" parent="MainVBox/VBoxContainer2/RichTextLabel2/OptionsSwipe2"]
+position = Vector2(210, 52)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MainVBox/VBoxContainer2/RichTextLabel2/OptionsSwipe2/OptionsArea3"]
+shape = SubResource("RectangleShape2D_p8vfy")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainVBox"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.24
+
+[node name="PaddingTop" type="Control" parent="MainVBox/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="RestartText" type="RichTextLabel" parent="MainVBox/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/normal_font = ExtResource("3_pwnj0")
+bbcode_enabled = true
+text = "[shake][center][font_size=20]PAINT IT OUT"
+
+[node name="PaddingDown" type="Control" parent="MainVBox/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3

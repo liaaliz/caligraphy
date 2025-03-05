@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="RangedType" load_steps=2 format=3 uid="uid://bfbqhl38y0cqe"]
+
+[ext_resource type="Script" path="res://code/resources/code/RangedType.gd" id="1_0da0c"]
+
+[resource]
+script = ExtResource("1_0da0c")
+bullet = "NORMAL"
+reload_time = 3.0
+speed = 20
+atk_range = 600

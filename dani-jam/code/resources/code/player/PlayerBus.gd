@@ -1,0 +1,31 @@
+extends Node
+@export var game_resource   : GameResource
+@export var player_resource : PlayerResource
+@export var movement        : CharacterBody2D
+#@export var animation      : AnimationTree 
+@export var hurtbox         : Area2D
+@export var brush_attack    : Node 
+
+func _ready() -> void:
+  hurtbox.has_died.connect(handle_has_died)
+  player_resource.on_experience_change.connect(handle_experience_change)
+
+func check_ink_meter() -> float:
+  return brush_attack.ink_meter
+
+func zero_ink_meter() -> void:
+  brush_attack.ink_meter = 0
+
+func handle_has_died(): 
+  game_resource.change_state(game_resource.GAME_STATE.END_MENU)
+  queue_free()
+
+func process_level_up() -> void:
+  player_resource.level += 1
+  player_resource.experience_points = 0
+  game_resource.change_state(game_resource.GAME_STATE.LEVEL_UP)
+
+func handle_experience_change() -> void:
+  player_resource.experience_points += 1
+  if player_resource.experience_points >= 100:
+    process_level_up()
