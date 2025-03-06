@@ -1,42 +1,56 @@
-[gd_scene load_steps=7 format=3 uid="uid://b5qcja11degv3"]
+[gd_scene load_steps=9 format=3 uid="uid://b5qcja11degv3"]
 
 [ext_resource type="FontFile" uid="uid://gbynvip3fg7x" path="res://themes/fonts/cour.ttf" id="1_22yen"]
+[ext_resource type="Script" path="res://code/resources/code/StartMenuBus.gd" id="1_xng02"]
 [ext_resource type="FontFile" uid="uid://ddf8xwngn31bs" path="res://themes/fonts/courbd.ttf" id="2_i08pn"]
 [ext_resource type="FontFile" uid="uid://bxcgw0pp65rc8" path="res://themes/fonts/monego-master/Monego/Monego-Regular.otf" id="3_pwnj0"]
+[ext_resource type="Script" path="res://code/SwipeButton.gd" id="4_rxdvr"]
+[ext_resource type="Script" path="res://code/MouseControl.gd" id="5_embtg"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_o0831"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yjxt4"]
 size = Vector2(88.18, 103)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_1ois0"]
-size = Vector2(125.455, 103)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o0831"]
+size = Vector2(109.414, 103)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_p8vfy"]
-size = Vector2(84, 103)
-
-[node name="StartMenu" type="Control"]
+[node name="StartMenu" type="Control" node_paths=PackedStringArray("options_swipe", "start_swipe", "exit_swipe")]
+z_index = -1
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_xng02")
+options_swipe = NodePath("MainVBox/VBoxContainer2/RichTextLabel3/Control/OptionsSwipe")
+start_swipe = NodePath("MainVBox/VBoxContainer2/RichTextLabel/Control/StartSwipe")
+exit_swipe = NodePath("MainVBox/VBoxContainer2/RichTextLabel2/Control/ExitSwipe")
+
+[node name="MouseControl" type="Node2D" parent="."]
+script = ExtResource("5_embtg")
 
 [node name="TopPart" type="ColorRect" parent="."]
+z_index = -1
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
-anchor_bottom = 0.5
+anchor_bottom = 1.0
+offset_bottom = -360.0
+mouse_filter = 1
 color = Color(0, 0, 0, 1)
 
 [node name="BottomPart" type="ColorRect" parent="."]
+z_index = -1
 layout_mode = 1
 anchors_preset = -1
-anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = 360.0
 offset_bottom = -3.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 color = Color(0, 0, 0, 1)
 
 [node name="MainVBox" type="VBoxContainer" parent="."]
@@ -50,14 +64,17 @@ offset_right = -66.0
 offset_bottom = -37.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="MainVBox"]
 layout_mode = 2
 size_flags_vertical = 3
+mouse_filter = 2
 
 [node name="RichTextLabel" type="RichTextLabel" parent="MainVBox/VBoxContainer2"]
 layout_mode = 2
 size_flags_vertical = 3
+mouse_filter = 2
 theme_override_fonts/mono_font = ExtResource("1_22yen")
 theme_override_fonts/bold_font = ExtResource("2_i08pn")
 bbcode_enabled = true
@@ -73,30 +90,46 @@ text = "[b][wave=10][center][font_size=10][shake =100]
 \\_______)   )_(   |/     \\||/   \\__/   )_(   
                                              "
 
-[node name="StartSwipe" type="Node2D" parent="MainVBox/VBoxContainer2/RichTextLabel"]
-position = Vector2(392, 75.725)
+[node name="Control" type="Control" parent="MainVBox/VBoxContainer2/RichTextLabel"]
+layout_mode = 1
+anchor_left = 0.367
+anchor_top = 0.154
+anchor_right = 0.649
+anchor_bottom = 0.763
+offset_left = 0.0839844
+offset_top = -0.0260029
+offset_right = -0.252075
+offset_bottom = 0.0529938
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="Start_1" type="Area2D" parent="MainVBox/VBoxContainer2/RichTextLabel/StartSwipe"]
+[node name="StartSwipe" type="Node2D" parent="MainVBox/VBoxContainer2/RichTextLabel/Control" node_paths=PackedStringArray("mouse_controller")]
+position = Vector2(44, 49.725)
+script = ExtResource("4_rxdvr")
+mouse_controller = NodePath("../../../../../MouseControl")
+
+[node name="Start_1" type="Area2D" parent="MainVBox/VBoxContainer2/RichTextLabel/Control/StartSwipe"]
 position = Vector2(0, 2)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MainVBox/VBoxContainer2/RichTextLabel/StartSwipe/Start_1"]
-shape = SubResource("RectangleShape2D_o0831")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MainVBox/VBoxContainer2/RichTextLabel/Control/StartSwipe/Start_1"]
+shape = SubResource("RectangleShape2D_yjxt4")
 
-[node name="Start_2" type="Area2D" parent="MainVBox/VBoxContainer2/RichTextLabel/StartSwipe"]
-position = Vector2(89, 0)
+[node name="Start_2" type="Area2D" parent="MainVBox/VBoxContainer2/RichTextLabel/Control/StartSwipe"]
+position = Vector2(89, 2)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MainVBox/VBoxContainer2/RichTextLabel/StartSwipe/Start_2"]
-shape = SubResource("RectangleShape2D_o0831")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MainVBox/VBoxContainer2/RichTextLabel/Control/StartSwipe/Start_2"]
+shape = SubResource("RectangleShape2D_yjxt4")
 
-[node name="Start_3" type="Area2D" parent="MainVBox/VBoxContainer2/RichTextLabel/StartSwipe"]
-position = Vector2(178, 0)
+[node name="Start_3" type="Area2D" parent="MainVBox/VBoxContainer2/RichTextLabel/Control/StartSwipe"]
+position = Vector2(178, 2)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MainVBox/VBoxContainer2/RichTextLabel/StartSwipe/Start_3"]
-shape = SubResource("RectangleShape2D_o0831")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MainVBox/VBoxContainer2/RichTextLabel/Control/StartSwipe/Start_3"]
+shape = SubResource("RectangleShape2D_yjxt4")
 
 [node name="RichTextLabel3" type="RichTextLabel" parent="MainVBox/VBoxContainer2"]
 layout_mode = 2
 size_flags_vertical = 3
+mouse_filter = 2
 theme_override_fonts/bold_font = ExtResource("2_i08pn")
 bbcode_enabled = true
 text = "[b][wave=10][center][font_size=10][shake =100]
@@ -110,30 +143,46 @@ text = "[b][wave=10][center][font_size=10][shake =100]
  (_______)|/          )_(   \\_______/(_______)|/    )_)\\_______)
                                                                "
 
-[node name="OptionsSwipe" type="Node2D" parent="MainVBox/VBoxContainer2/RichTextLabel3"]
-position = Vector2(286, 9)
+[node name="Control" type="Control" parent="MainVBox/VBoxContainer2/RichTextLabel3"]
+layout_mode = 1
+anchor_left = 0.304
+anchor_top = 0.047
+anchor_right = 0.715
+anchor_bottom = 0.659
+offset_left = -0.192017
+offset_top = 0.00999975
+offset_right = 0.179993
+offset_bottom = -0.0300064
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="OptionsArea" type="Area2D" parent="MainVBox/VBoxContainer2/RichTextLabel3/OptionsSwipe"]
-position = Vector2(63, 52)
+[node name="OptionsSwipe" type="Node2D" parent="MainVBox/VBoxContainer2/RichTextLabel3/Control" node_paths=PackedStringArray("mouse_controller")]
+scale = Vector2(1.19, 1)
+script = ExtResource("4_rxdvr")
+mouse_controller = NodePath("../../../../../MouseControl")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MainVBox/VBoxContainer2/RichTextLabel3/OptionsSwipe/OptionsArea"]
-shape = SubResource("RectangleShape2D_1ois0")
+[node name="Option_1" type="Area2D" parent="MainVBox/VBoxContainer2/RichTextLabel3/Control/OptionsSwipe"]
+position = Vector2(54.701, 51.5638)
 
-[node name="OptionsArea2" type="Area2D" parent="MainVBox/VBoxContainer2/RichTextLabel3/OptionsSwipe"]
-position = Vector2(188, 52)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MainVBox/VBoxContainer2/RichTextLabel3/Control/OptionsSwipe/Option_1"]
+shape = SubResource("RectangleShape2D_o0831")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MainVBox/VBoxContainer2/RichTextLabel3/OptionsSwipe/OptionsArea2"]
-shape = SubResource("RectangleShape2D_1ois0")
+[node name="Option_2" type="Area2D" parent="MainVBox/VBoxContainer2/RichTextLabel3/Control/OptionsSwipe"]
+position = Vector2(164.076, 51.575)
 
-[node name="OptionsArea3" type="Area2D" parent="MainVBox/VBoxContainer2/RichTextLabel3/OptionsSwipe"]
-position = Vector2(313, 52)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MainVBox/VBoxContainer2/RichTextLabel3/Control/OptionsSwipe/Option_2"]
+shape = SubResource("RectangleShape2D_o0831")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MainVBox/VBoxContainer2/RichTextLabel3/OptionsSwipe/OptionsArea3"]
-shape = SubResource("RectangleShape2D_1ois0")
+[node name="Option_3" type="Area2D" parent="MainVBox/VBoxContainer2/RichTextLabel3/Control/OptionsSwipe"]
+position = Vector2(273.479, 51.575)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MainVBox/VBoxContainer2/RichTextLabel3/Control/OptionsSwipe/Option_3"]
+shape = SubResource("RectangleShape2D_o0831")
 
 [node name="RichTextLabel2" type="RichTextLabel" parent="MainVBox/VBoxContainer2"]
 layout_mode = 2
 size_flags_vertical = 3
+mouse_filter = 2
 theme_override_fonts/mono_font = ExtResource("1_22yen")
 theme_override_fonts/bold_font = ExtResource("2_i08pn")
 bbcode_enabled = true
@@ -148,40 +197,57 @@ text = "[b][wave=10][center][font_size=10][shake =100]
 (_______/|/     \\|\\_______/   )_(   
                                     "
 
-[node name="OptionsSwipe2" type="Node2D" parent="MainVBox/VBoxContainer2/RichTextLabel2"]
-position = Vector2(356, 12)
+[node name="Control" type="Control" parent="MainVBox/VBoxContainer2/RichTextLabel2"]
+layout_mode = 1
+anchor_left = 0.369
+anchor_top = 0.047
+anchor_right = 0.632
+anchor_bottom = 0.659
+offset_left = 0.187988
+offset_top = 0.00999975
+offset_right = -0.136047
+offset_bottom = -0.0300064
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="OptionsArea" type="Area2D" parent="MainVBox/VBoxContainer2/RichTextLabel2/OptionsSwipe2"]
-position = Vector2(63, 52)
+[node name="ExitSwipe" type="Node2D" parent="MainVBox/VBoxContainer2/RichTextLabel2/Control" node_paths=PackedStringArray("mouse_controller")]
+scale = Vector2(0.76, 1)
+script = ExtResource("4_rxdvr")
+mouse_controller = NodePath("../../../../../MouseControl")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MainVBox/VBoxContainer2/RichTextLabel2/OptionsSwipe2/OptionsArea"]
-position = Vector2(-21, 0)
-shape = SubResource("RectangleShape2D_p8vfy")
+[node name="Exit_1" type="Area2D" parent="MainVBox/VBoxContainer2/RichTextLabel2/Control/ExitSwipe"]
+position = Vector2(54.701, 51.5638)
 
-[node name="OptionsArea2" type="Area2D" parent="MainVBox/VBoxContainer2/RichTextLabel2/OptionsSwipe2"]
-position = Vector2(126, 52)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MainVBox/VBoxContainer2/RichTextLabel2/Control/ExitSwipe/Exit_1"]
+shape = SubResource("RectangleShape2D_o0831")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MainVBox/VBoxContainer2/RichTextLabel2/OptionsSwipe2/OptionsArea2"]
-shape = SubResource("RectangleShape2D_p8vfy")
+[node name="Exit_2" type="Area2D" parent="MainVBox/VBoxContainer2/RichTextLabel2/Control/ExitSwipe"]
+position = Vector2(164.076, 51.575)
 
-[node name="OptionsArea3" type="Area2D" parent="MainVBox/VBoxContainer2/RichTextLabel2/OptionsSwipe2"]
-position = Vector2(210, 52)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MainVBox/VBoxContainer2/RichTextLabel2/Control/ExitSwipe/Exit_2"]
+shape = SubResource("RectangleShape2D_o0831")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MainVBox/VBoxContainer2/RichTextLabel2/OptionsSwipe2/OptionsArea3"]
-shape = SubResource("RectangleShape2D_p8vfy")
+[node name="Exit_3" type="Area2D" parent="MainVBox/VBoxContainer2/RichTextLabel2/Control/ExitSwipe"]
+position = Vector2(273.479, 51.575)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MainVBox/VBoxContainer2/RichTextLabel2/Control/ExitSwipe/Exit_3"]
+shape = SubResource("RectangleShape2D_o0831")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MainVBox"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.24
+mouse_filter = 2
 
 [node name="PaddingTop" type="Control" parent="MainVBox/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+mouse_filter = 2
 
 [node name="RestartText" type="RichTextLabel" parent="MainVBox/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+mouse_filter = 2
 theme_override_fonts/normal_font = ExtResource("3_pwnj0")
 bbcode_enabled = true
 text = "[shake][center][font_size=20]PAINT TO SELECT"
@@ -189,3 +255,4 @@ text = "[shake][center][font_size=20]PAINT TO SELECT"
 [node name="PaddingDown" type="Control" parent="MainVBox/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+mouse_filter = 2

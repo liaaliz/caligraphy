@@ -1,13 +1,16 @@
 [gd_scene load_steps=2 format=3 uid="uid://bnk5wlafoj7pa"]
 
 [sub_resource type="Curve" id="Curve_dd7qk"]
-_data = [Vector2(0, 0), 0.0, -0.115082, 0, 0, Vector2(1, 0.978022), -0.0336758, 0.0, 0, 0]
-point_count = 2
+resource_local_to_scene = true
+_data = [Vector2(0, 0), 0.0, -0.115082, 0, 0, Vector2(0.287059, 0.235955), -7.16291, 2.90142, 0, 0, Vector2(0.482353, 0.893258), -0.0657793, -0.0657793, 0, 0, Vector2(0.722353, 0.320225), -1.5008, 2.72874, 0, 0, Vector2(1, 0.505618), -12.2034, 0.0, 0, 0]
+point_count = 5
 
 [node name="TrailBase" type="Line2D"]
+top_level = true
+z_index = 1
 width = 15.0
 width_curve = SubResource("Curve_dd7qk")
-default_color = Color(0.6, 0, 0.196078, 0.286275)
+default_color = Color(0.882353, 0, 0.305882, 1)
 joint_mode = 1
 begin_cap_mode = 2
 end_cap_mode = 2

@@ -8,6 +8,7 @@ enum GAME_STATE {
   LEVEL_UP,
   END_MENU,
 }
+
 var game_state : GAME_STATE 
 var enemies : Array[Enemy]
 var last_enemy_id : int = 0
