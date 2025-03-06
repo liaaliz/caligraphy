@@ -1,16 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://btnola12cpjxf"]
+[gd_scene load_steps=6 format=3 uid="uid://btnola12cpjxf"]
 
 [ext_resource type="Script" path="res://code/EnemySpawner.gd" id="1_0tqum"]
 [ext_resource type="Texture2D" uid="uid://b63428sfp15m1" path="res://art/texture_07.png" id="1_nmsco"]
 [ext_resource type="PackedScene" uid="uid://cuww5o57uxtul" path="res://scenes/Enemies/GhostEnemy.tscn" id="2_4sff0"]
-[ext_resource type="Script" path="res://code/MovePlayer.gd" id="3_rhi8c"]
 [ext_resource type="PackedScene" uid="uid://dipp6fackfjms" path="res://scenes/Enemies/BookEnemy.tscn" id="3_wyca8"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_ng4op"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_f7ycj"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_lbb7e"]
+[ext_resource type="PackedScene" uid="uid://drma5gn1cnf46" path="res://scenes/PlayerBus.tscn" id="5_ssutc"]
 
 [node name="TestScene" type="Node2D"]
 
@@ -23,53 +17,17 @@ color = Color(0.956863, 0.811765, 0.552941, 1)
 texture = ExtResource("1_nmsco")
 polygon = PackedVector2Array(-520.127, -1950.48, 10857.7, -1950.48, 10857.7, 5916.44, -520.127, 5916.44)
 
+[node name="PlayerBus" parent="." instance=ExtResource("5_ssutc")]
+
 [node name="EnemySpawner" type="Node" parent="." node_paths=PackedStringArray("target")]
 script = ExtResource("1_0tqum")
 spawn_interval = 2.0
 target = NodePath("../PlayerBus/Player")
 enemies_to_spawn = Array[PackedScene]([ExtResource("3_wyca8"), ExtResource("2_4sff0")])
 
-[node name="PlayerBus" type="Node" parent="."]
-
-[node name="Player" type="CharacterBody2D" parent="PlayerBus" node_paths=PackedStringArray("brush_pivot")]
-position = Vector2(368, 56)
-script = ExtResource("3_rhi8c")
-brush_pivot = NodePath("pivot")
-
-[node name="Sprite" type="MeshInstance2D" parent="PlayerBus/Player"]
-scale = Vector2(18, 18)
-mesh = SubResource("BoxMesh_ng4op")
-metadata/_edit_group_ = true
-
-[node name="Leg1" type="MeshInstance2D" parent="PlayerBus/Player/Sprite"]
-position = Vector2(0.333333, 0.5)
-scale = Vector2(0.331111, 1)
-mesh = SubResource("BoxMesh_ng4op")
-
-[node name="Leg2" type="MeshInstance2D" parent="PlayerBus/Player/Sprite"]
-position = Vector2(-0.333333, 0.5)
-scale = Vector2(0.331111, 1)
-mesh = SubResource("BoxMesh_ng4op")
-
-[node name="pivot" type="Node2D" parent="PlayerBus/Player"]
-position = Vector2(4, 0)
-rotation = 1.5708
-
-[node name="Brush" type="MeshInstance2D" parent="PlayerBus/Player/pivot"]
-modulate = Color(0.603922, 1, 0.611765, 1)
-position = Vector2(33.6488, -9.55181e-05)
-rotation = 3.14159
-scale = Vector2(59.2976, 5)
-mesh = SubResource("BoxMesh_f7ycj")
-
-[node name="pivot" type="Node2D" parent="PlayerBus/Player/pivot"]
-modulate = Color(0, 1, 1, 1)
-position = Vector2(125, -0.000452499)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerBus/Player"]
-shape = SubResource("CircleShape2D_lbb7e")
-
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[editable path="PlayerBus"]

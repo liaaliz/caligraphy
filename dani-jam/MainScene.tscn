@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://dx4rhrkkqt48x"]
+
+[ext_resource type="PackedScene" uid="uid://b5qcja11degv3" path="res://scenes/Menus/StartMenu.tscn" id="1_dmq67"]
+[ext_resource type="Script" path="res://code/MouseControl.gd" id="2_y6mqy"]
+
+[node name="MainScene" type="Node"]
+
+[node name="MouseControl" type="Node" parent="."]
+script = ExtResource("2_y6mqy")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="StartMenu" parent="CanvasLayer" instance=ExtResource("1_dmq67")]

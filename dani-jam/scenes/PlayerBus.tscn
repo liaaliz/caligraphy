@@ -1,51 +1,40 @@
-[gd_scene load_steps=6 format=3 uid="uid://drma5gn1cnf46"]
+[gd_scene load_steps=4 format=3 uid="uid://drma5gn1cnf46"]
 
 [ext_resource type="Script" path="res://code/MovePlayer.gd" id="1_8dhmy"]
-[ext_resource type="Resource" uid="uid://drm5bfoqbbcvv" path="res://code/resources/PlayeResource.tres" id="2_62lcy"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_ng4op"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0bdo8"]
+size = Vector2(16, 20)
 
-[sub_resource type="BoxMesh" id="BoxMesh_f7ycj"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_lbb7e"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_merf8"]
+size = Vector2(11.8675, 12.1449)
 
 [node name="PlayerBus" type="Node"]
 
 [node name="Player" type="CharacterBody2D" parent="." node_paths=PackedStringArray("brush_pivot")]
-position = Vector2(368, 56)
 script = ExtResource("1_8dhmy")
-brush_pivot = NodePath("pivot")
-player_resource = ExtResource("2_62lcy")
+brush_pivot = NodePath("")
 
-[node name="Sprite" type="MeshInstance2D" parent="Player"]
+[node name="Sprite" type="Polygon2D" parent="Player"]
 scale = Vector2(18, 18)
-mesh = SubResource("BoxMesh_ng4op")
-metadata/_edit_group_ = true
+color = Color(0.564962, 0.564962, 0.564962, 1)
+offset = Vector2(0, 0.888889)
+polygon = PackedVector2Array(-0.444445, -0.222222, 0.444445, -0.222222, 0.444445, -1, -0.444445, -1)
 
-[node name="Leg1" type="MeshInstance2D" parent="Player/Sprite"]
-position = Vector2(0.333333, 0.5)
-scale = Vector2(0.331111, 1)
-mesh = SubResource("BoxMesh_ng4op")
-
-[node name="Leg2" type="MeshInstance2D" parent="Player/Sprite"]
-position = Vector2(-0.333333, 0.5)
-scale = Vector2(0.331111, 1)
-mesh = SubResource("BoxMesh_ng4op")
-
-[node name="pivot" type="Node2D" parent="Player"]
-position = Vector2(4, 0)
-rotation = 1.5708
-
-[node name="Brush" type="MeshInstance2D" parent="Player/pivot"]
-modulate = Color(0.603922, 1, 0.611765, 1)
-position = Vector2(33.6488, -9.55181e-05)
-rotation = 3.14159
-scale = Vector2(59.2976, 5)
-mesh = SubResource("BoxMesh_f7ycj")
-
-[node name="pivot" type="Node2D" parent="Player/pivot"]
-modulate = Color(0, 1, 1, 1)
-position = Vector2(125, -0.000452499)
+[node name="Sprite2" type="Polygon2D" parent="Player"]
+scale = Vector2(18, 18)
+offset = Vector2(0, 0.555556)
+polygon = PackedVector2Array(-0.444445, -0.222222, 0.444445, -0.222222, 0.444445, -1, -0.00310779, -1, -0.444445, -1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
-shape = SubResource("CircleShape2D_lbb7e")
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_0bdo8")
+
+[node name="HurtBox" type="Area2D" parent="Player"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/HurtBox"]
+y_sort_enabled = true
+position = Vector2(0, -0.00717163)
+shape = SubResource("RectangleShape2D_merf8")
+debug_color = Color(0.881058, 0.000353087, 0.820129, 0.42)
+
+[node name="BrushAttack" type="Node" parent="."]

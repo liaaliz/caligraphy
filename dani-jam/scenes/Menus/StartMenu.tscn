@@ -74,9 +74,10 @@ text = "[b][wave=10][center][font_size=10][shake =100]
                                              "
 
 [node name="StartSwipe" type="Node2D" parent="MainVBox/VBoxContainer2/RichTextLabel"]
-position = Vector2(423.91, 75.725)
+position = Vector2(392, 75.725)
 
 [node name="Start_1" type="Area2D" parent="MainVBox/VBoxContainer2/RichTextLabel/StartSwipe"]
+position = Vector2(0, 2)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MainVBox/VBoxContainer2/RichTextLabel/StartSwipe/Start_1"]
 shape = SubResource("RectangleShape2D_o0831")
@@ -110,7 +111,7 @@ text = "[b][wave=10][center][font_size=10][shake =100]
                                                                "
 
 [node name="OptionsSwipe" type="Node2D" parent="MainVBox/VBoxContainer2/RichTextLabel3"]
-position = Vector2(325, 10)
+position = Vector2(286, 9)
 
 [node name="OptionsArea" type="Area2D" parent="MainVBox/VBoxContainer2/RichTextLabel3/OptionsSwipe"]
 position = Vector2(63, 52)
@@ -148,7 +149,7 @@ text = "[b][wave=10][center][font_size=10][shake =100]
                                     "
 
 [node name="OptionsSwipe2" type="Node2D" parent="MainVBox/VBoxContainer2/RichTextLabel2"]
-position = Vector2(385, 12)
+position = Vector2(356, 12)
 
 [node name="OptionsArea" type="Area2D" parent="MainVBox/VBoxContainer2/RichTextLabel2/OptionsSwipe2"]
 position = Vector2(63, 52)
@@ -183,7 +184,7 @@ layout_mode = 2
 size_flags_vertical = 3
 theme_override_fonts/normal_font = ExtResource("3_pwnj0")
 bbcode_enabled = true
-text = "[shake][center][font_size=20]PAINT IT OUT"
+text = "[shake][center][font_size=20]PAINT TO SELECT"
 
 [node name="PaddingDown" type="Control" parent="MainVBox/VBoxContainer"]
 layout_mode = 2
