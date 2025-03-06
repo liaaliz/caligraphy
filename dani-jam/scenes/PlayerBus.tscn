@@ -12,6 +12,7 @@
 [node name="PlayerBus" type="Node"]
 
 [node name="Player" type="CharacterBody2D" parent="." node_paths=PackedStringArray("brush_pivot")]
+position = Vector2(368, 56)
 script = ExtResource("1_8dhmy")
 brush_pivot = NodePath("pivot")
 player_resource = ExtResource("2_62lcy")
@@ -35,15 +36,16 @@ mesh = SubResource("BoxMesh_ng4op")
 position = Vector2(4, 0)
 rotation = 1.5708
 
+[node name="Brush" type="MeshInstance2D" parent="Player/pivot"]
+modulate = Color(0.603922, 1, 0.611765, 1)
+position = Vector2(33.6488, -9.55181e-05)
+rotation = 3.14159
+scale = Vector2(59.2976, 5)
+mesh = SubResource("BoxMesh_f7ycj")
+
 [node name="pivot" type="Node2D" parent="Player/pivot"]
 modulate = Color(0, 1, 1, 1)
-position = Vector2(4, -1.4782e-05)
-rotation = 3.14159
-scale = Vector2(122, 5)
-
-[node name="Brush" type="MeshInstance2D" parent="Player/pivot/pivot"]
-position = Vector2(-0.5, 1.06656e-06)
-mesh = SubResource("BoxMesh_f7ycj")
+position = Vector2(125, -0.000452499)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
 shape = SubResource("CircleShape2D_lbb7e")

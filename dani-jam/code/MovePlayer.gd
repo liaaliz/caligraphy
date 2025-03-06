@@ -1,13 +1,9 @@
 extends CharacterBody2D
 @export var brush_pivot : Node2D
-@export var player_resource : PlayerResource
 
 const SPEED   : float = 300.0
 var direction : Vector2 
 @export var ink_meter : int = 100
-
-func _ready() -> void:
-  player_resource.on_experience_change.connect(handle_experience_points_change)
 
 func _unhandled_input(e: InputEvent) -> void:
   if not e is InputEventMouseMotion: return
@@ -27,14 +23,6 @@ func _physics_process(_delta: float) -> void:
   var _smooth : float = 0.2
   velocity = lerp(velocity, direction.normalized() * SPEED, _smooth)
 
-func handle_level_up() -> void:
-  player_resource.level += 1
-  player_resource.experience_points = 0
-
-func handle_experience_points_change() -> void:
-  player_resource.experience_points += 1
-  if player_resource.experience_points >= 100:
-    handle_level_up()
 
 func handle_ink_meter_change() -> void:
   ink_meter = clamp(ink_meter, 0, 100)
