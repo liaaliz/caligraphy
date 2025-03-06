@@ -27,8 +27,7 @@ polygon = PackedVector2Array(-520.127, -1950.48, 10857.7, -1950.48, 10857.7, 591
 script = ExtResource("1_0tqum")
 spawn_interval = 2.0
 target = NodePath("../PlayerBus/Player")
-ghost_scene = ExtResource("2_4sff0")
-book_scene = ExtResource("3_wyca8")
+enemies_to_spawn = Array[PackedScene]([ExtResource("3_wyca8"), ExtResource("2_4sff0")])
 
 [node name="PlayerBus" type="Node" parent="."]
 

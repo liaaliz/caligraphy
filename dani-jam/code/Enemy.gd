@@ -9,6 +9,7 @@ var target : CharacterBody2D
 
 func _ready() -> void:
   game_resource.enemies.insert(id, self)
+  type = type
   type.target = target
   type.ready()
 

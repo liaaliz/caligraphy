@@ -3,8 +3,7 @@ extends Node
 
 var spawn_tick : float
 @export var target : CharacterBody2D
-@export var ghost_scene : PackedScene
-@export var book_scene : PackedScene
+@export var enemies_to_spawn: Array[PackedScene]
 
 func add_enemy_to_scene(new_enemy: Enemy) -> void:
   new_enemy.target = target
@@ -17,7 +16,7 @@ func _process(delta : float) -> void:
   spawn_tick += delta
   if spawn_tick < spawn_interval: return
   randomize()
-  var enemy_to_spawn : Enemy = (book_scene.instantiate() if ((randi() % 10) + 1) > 7 else ghost_scene.instantiate()) as Enemy
+  var enemy_to_spawn : Enemy = enemies_to_spawn[randi() % enemies_to_spawn.size()].instantiate() as Enemy
   add_enemy_to_scene(enemy_to_spawn)
   spawn_tick = 0
   return

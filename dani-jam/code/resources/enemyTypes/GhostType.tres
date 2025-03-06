@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://code/resources/code/MeleeType.gd" id="1_xu8gj"]
 
 [resource]
+resource_local_to_scene = true
 script = ExtResource("1_xu8gj")
 attack_delay = 0.0
 speed = 40
