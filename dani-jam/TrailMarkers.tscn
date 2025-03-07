@@ -2,12 +2,13 @@
 
 [ext_resource type="Texture2D" uid="uid://bero72tggywr1" path="res://art/debug/WhiteCircle.png" id="1_iia7h"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_b5w00"]
-radius = 14.0357
+[sub_resource type="CircleShape2D" id="CircleShape2D_30ivw"]
 
-[node name="TrailMarkers" type="CollisionShape2D"]
-shape = SubResource("CircleShape2D_b5w00")
+[node name="TrailMarkers" type="Area2D"]
 
 [node name="circle" type="Sprite2D" parent="."]
-scale = Vector2(0.0315217, 0.0315217)
+scale = Vector2(0.0225543, 0.0225543)
 texture = ExtResource("1_iia7h")
+
+[node name="colisor" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_30ivw")

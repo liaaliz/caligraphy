@@ -3,6 +3,9 @@ extends Node2D
 @onready var marker_ref = preload("res://TrailMarkers.tscn")
 var is_running : bool = false
 
+# Add signal for marker creation
+signal marker_created(marker_position: Vector2)
+
 # Add exported variable to control marker spacing
 @export var marker_spacing: int = 5 : 
     set(value):
@@ -52,6 +55,10 @@ func paint_loop() -> void:
     var marker = marker_ref.instantiate()
     get_tree().get_root().get_child(0).add_child(marker)
     marker.global_position = point
+    if marker is Area2D:
+      marker.add_to_group("marker")
+    emit_signal("marker_created", marker)  # Pass the marker node itself
+  #  print("Marker created at: ", marker.global_position)
 
   brush_trail.queue_free()
   is_running = false
