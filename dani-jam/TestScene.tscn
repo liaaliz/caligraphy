@@ -11,6 +11,12 @@
 
 [node name="TestScene" type="Node2D"]
 
+[node name="EnemySpawner" type="Node" parent="." node_paths=PackedStringArray("target")]
+script = ExtResource("1_0tqum")
+spawn_interval = 2.0
+target = NodePath("../PlayerBus/Player")
+enemies_to_spawn = Array[PackedScene]([ExtResource("3_wyca8"), ExtResource("2_4sff0")])
+
 [node name="CheckeredBackground" type="Polygon2D" parent="."]
 z_index = -1
 texture_repeat = 2
@@ -30,15 +36,7 @@ brush_attack = NodePath("BrushAttack")
 [node name="HurtBox" parent="PlayerBus/Player" index="3"]
 script = ExtResource("3_e7cbr")
 
-[node name="EnemySpawner" type="Node" parent="." node_paths=PackedStringArray("target")]
-script = ExtResource("1_0tqum")
-spawn_interval = 2.0
-target = NodePath("../PlayerBus/Player")
-enemies_to_spawn = Array[PackedScene]([ExtResource("3_wyca8"), ExtResource("2_4sff0")])
-
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [editable path="PlayerBus"]
