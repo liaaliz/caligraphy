@@ -6,6 +6,6 @@
 resource_local_to_scene = true
 script = ExtResource("1_0da0c")
 bullet = "NORMAL"
-reload_time = 3.0
-speed = 20
-atk_range = 600
+reload_time = 1.0
+speed = 60
+atk_range = 100
