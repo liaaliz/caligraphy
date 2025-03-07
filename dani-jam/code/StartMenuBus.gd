@@ -10,34 +10,34 @@ var is_processing: bool = false   # Prevent re-entrancy
 func _ready() -> void:
 	# Connect swipe buttons with error checking
 	if start_swipe and start_swipe.has_signal("on_end_swipe"):
-		start_swipe.connect("on_end_swipe", _on_button_selected.bind(start_swipe))
+		start_swipe.connect("on_end_swipe", Callable(self, "_on_button_selected").bind(start_swipe))
 	if options_swipe and options_swipe.has_signal("on_end_swipe"):
-		options_swipe.connect("on_end_swipe", _on_button_selected.bind(options_swipe))
+		options_swipe.connect("on_end_swipe", Callable(self, "_on_button_selected").bind(options_swipe))
 	if exit_swipe and exit_swipe.has_signal("on_end_swipe"):
-		exit_swipe.connect("on_end_swipe", _on_button_selected.bind(exit_swipe))
+		exit_swipe.connect("on_end_swipe", Callable(self, "_on_button_selected").bind(exit_swipe))
 
 func _on_button_selected(button: Node2D) -> void:
-  if is_processing:
+	if is_processing:
 		return  # Prevent re-entrancy
 		
 	is_processing = true
-	try:
-		if not button:
-			push_error("Received null button selection")
-			return
-		
-		selected_buttons.append(button)
-		print("Button selected: ", button.name)
-		print("Current selected buttons: ", selected_buttons.map(func(b): return b.name))
-		
-		# Check for multiple selections
-		if selected_buttons.size() > 1:
-			_check_multiple_selections()
-		else:
-			_handle_button_action(button)
-			_clear_selection()
-	finally:
+	if not button:
+		push_error("Received null button selection")
 		is_processing = false
+		return
+		
+	selected_buttons.append(button)
+	print("Button selected: ", button.name)
+	print("Current selected buttons: ", selected_buttons.map(func(b): return b.name))
+		
+	# Check for multiple selections
+	if selected_buttons.size() > 1:
+		_check_multiple_selections()
+	else:
+		_handle_button_action(button)
+		_clear_selection()
+	
+	is_processing = false
 
 func _check_multiple_selections() -> void:
 	print("Checking multiple selections...")
@@ -71,5 +71,5 @@ func _clear_selection() -> void:
 	selected_buttons.clear()
 	# Reset all buttons
 	for button in [start_swipe, options_swipe, exit_swipe]:
-    if button and button.has_method("reset"):
-      button.reset()
+		if button and button.has_method("reset"):
+			button.call("reset")
