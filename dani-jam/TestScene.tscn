@@ -1,9 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://btnola12cpjxf"]
+[gd_scene load_steps=9 format=3 uid="uid://btnola12cpjxf"]
 
 [ext_resource type="Script" path="res://code/EnemySpawner.gd" id="1_0tqum"]
 [ext_resource type="Texture2D" uid="uid://b63428sfp15m1" path="res://art/texture_07.png" id="1_nmsco"]
 [ext_resource type="PackedScene" uid="uid://cuww5o57uxtul" path="res://scenes/Enemies/GhostEnemy.tscn" id="2_4sff0"]
+[ext_resource type="Script" path="res://code/player/HurtBox.gd" id="3_e7cbr"]
+[ext_resource type="Script" path="res://code/player/PlayerBus.gd" id="3_fane1"]
 [ext_resource type="PackedScene" uid="uid://dipp6fackfjms" path="res://scenes/Enemies/BookEnemy.tscn" id="3_wyca8"]
+[ext_resource type="Resource" uid="uid://drm5bfoqbbcvv" path="res://code/resources/PlayeResource.tres" id="5_awxkj"]
 [ext_resource type="PackedScene" uid="uid://drma5gn1cnf46" path="res://scenes/PlayerBus.tscn" id="5_ssutc"]
 
 [node name="TestScene" type="Node2D"]
@@ -17,7 +20,15 @@ color = Color(0.956863, 0.811765, 0.552941, 1)
 texture = ExtResource("1_nmsco")
 polygon = PackedVector2Array(-520.127, -1950.48, 10857.7, -1950.48, 10857.7, 5916.44, -520.127, 5916.44)
 
-[node name="PlayerBus" parent="." instance=ExtResource("5_ssutc")]
+[node name="PlayerBus" parent="." node_paths=PackedStringArray("movement", "hurtbox", "brush_attack") instance=ExtResource("5_ssutc")]
+script = ExtResource("3_fane1")
+player_resource = ExtResource("5_awxkj")
+movement = NodePath("Player")
+hurtbox = NodePath("Player/HurtBox")
+brush_attack = NodePath("BrushAttack")
+
+[node name="HurtBox" parent="PlayerBus/Player" index="3"]
+script = ExtResource("3_e7cbr")
 
 [node name="EnemySpawner" type="Node" parent="." node_paths=PackedStringArray("target")]
 script = ExtResource("1_0tqum")

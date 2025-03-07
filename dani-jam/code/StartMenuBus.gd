@@ -8,6 +8,7 @@ var selected_buttons: Array = []  # Track selected buttons
 var is_processing: bool = false   # Prevent re-entrancy
 
 func _ready() -> void:
+<<<<<<< HEAD
 	# Connect swipe buttons with error checking
 	if start_swipe and start_swipe.has_signal("on_end_swipe"):
 		start_swipe.connect("on_end_swipe", Callable(self, "_on_button_selected").bind(start_swipe))
@@ -15,6 +16,15 @@ func _ready() -> void:
 		options_swipe.connect("on_end_swipe", Callable(self, "_on_button_selected").bind(options_swipe))
 	if exit_swipe and exit_swipe.has_signal("on_end_swipe"):
 		exit_swipe.connect("on_end_swipe", Callable(self, "_on_button_selected").bind(exit_swipe))
+=======
+  # Connect swipe buttons with error checking
+  if start_swipe and start_swipe.has_signal("on_end_swipe"):
+    start_swipe.connect("on_end_swipe", _on_button_selected.bind(start_swipe))
+  if options_swipe and options_swipe.has_signal("on_end_swipe"):
+    options_swipe.connect("on_end_swipe", _on_button_selected.bind(options_swipe))
+  if exit_swipe and exit_swipe.has_signal("on_end_swipe"):
+    exit_swipe.connect("on_end_swipe", _on_button_selected.bind(exit_swipe))
+>>>>>>> f9224aa (FEAT add player death)
 
 func _on_button_selected(button: Node2D) -> void:
 	if is_processing:
@@ -71,5 +81,10 @@ func _clear_selection() -> void:
 	selected_buttons.clear()
 	# Reset all buttons
 	for button in [start_swipe, options_swipe, exit_swipe]:
+<<<<<<< HEAD
 		if button and button.has_method("reset"):
 			button.call("reset")
+=======
+    if button and button.has_method("reset"):
+      button.reset()
+>>>>>>> f9224aa (FEAT add player death)
