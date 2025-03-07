@@ -1,5 +1,5 @@
 extends Node
-@export var game_resource   : GameResource
+@export var main_scene      : Node 
 @export var player_resource : PlayerResource
 @export var movement        : CharacterBody2D
 #@export var animation      : AnimationTree 
@@ -17,13 +17,12 @@ func zero_ink_meter() -> void:
   brush_attack.ink_meter = 0
 
 func handle_has_died(): 
-  game_resource.change_state(game_resource.GAME_STATE.END_MENU)
+  main_scene.call_screen(main_screen.SCREENS.DEAD_SCREEN)
   queue_free()
 
 func process_level_up() -> void:
   player_resource.level += 1
   player_resource.experience_points = 0
-  game_resource.change_state(game_resource.GAME_STATE.LEVEL_UP)
 
 func handle_experience_change() -> void:
   player_resource.experience_points += 1
