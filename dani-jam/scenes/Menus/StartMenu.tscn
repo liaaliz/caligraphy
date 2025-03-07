@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://b5qcja11degv3"]
 
 [ext_resource type="FontFile" uid="uid://gbynvip3fg7x" path="res://themes/fonts/cour.ttf" id="1_22yen"]
-[ext_resource type="Script" path="res://code/resources/code/StartMenuBus.gd" id="1_xng02"]
+[ext_resource type="Script" path="res://code/StartMenuBus.gd" id="1_xng02"]
 [ext_resource type="FontFile" uid="uid://ddf8xwngn31bs" path="res://themes/fonts/courbd.ttf" id="2_i08pn"]
 [ext_resource type="FontFile" uid="uid://bxcgw0pp65rc8" path="res://themes/fonts/monego-master/Monego/Monego-Regular.otf" id="3_pwnj0"]
 [ext_resource type="Script" path="res://code/SwipeButton.gd" id="4_rxdvr"]

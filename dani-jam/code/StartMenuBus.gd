@@ -6,4 +6,4 @@ extends Control
 @onready var game_resource : GameResource = preload("res://code/resources/GameResource.tres")
 
 func _ready() -> void:
-  start_swipe.connect("has_painted", game_resource.change_state.bind(game_resource.GAME_STATE.IN_GAME))
+  start_swipe.connect("on_end_swipe", game_resource.change_state.bind(game_resource.GAME_STATE.IN_GAME))

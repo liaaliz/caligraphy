@@ -1,8 +1,8 @@
 extends Node2D
 @export var mouse_controller : Node2D
 @onready var confirm : Array = [false, false, false]
-@onready var has_painted : Signal
 @onready var game_resource = preload("res://code/resources/GameResource.tres")
+var on_end_swipe : Signal
 
 func _ready() -> void:
   for index in range(get_child_count()):
@@ -10,7 +10,7 @@ func _ready() -> void:
 
 func _process(delta : float) -> void:
   if confirm.all(func(check): return check):
-    has_painted.emit()
+    on_end_swipe.emit()
     reset()
 
 func check_in_parts(area2D: Area2D, index : int) -> void:

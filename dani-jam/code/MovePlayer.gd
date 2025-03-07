@@ -15,7 +15,6 @@ func _physics_process(_delta: float) -> void:
   var _smooth : float = 0.2
   velocity = lerp(velocity, direction.normalized() * SPEED, _smooth)
 
-
 func handle_ink_meter_change() -> void:
   ink_meter = clamp(ink_meter, 0, 100)
   if ink_meter <= 0:
