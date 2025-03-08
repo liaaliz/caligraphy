@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://code/SceneSpawner.gd" id="1_gkyxl"]
 
-[node name="MainScene" type="Node"]
+[node name="ScreenSpawner" type="Node"]
 script = ExtResource("1_gkyxl")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]

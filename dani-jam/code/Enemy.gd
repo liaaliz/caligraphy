@@ -14,11 +14,13 @@ func _ready() -> void:
   type.ready()
 
 func _physics_process(delta : float) -> void:
+  if target == null : return
   move_to_target(delta)
   attack()
   type.physics_process(delta)
 
 func attack() -> void:
+  if target == null : return
   type.attack(global_position)
 
 func die() -> void:

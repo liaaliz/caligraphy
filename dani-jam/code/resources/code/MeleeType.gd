@@ -10,4 +10,3 @@ func attack(global_position : Vector2) -> void:
   can_attack = false
   await self.target.get_tree().create_timer(attack_delay)
   can_attack = true
-

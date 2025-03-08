@@ -9,7 +9,7 @@
 [ext_resource type="Resource" uid="uid://drm5bfoqbbcvv" path="res://code/resources/PlayeResource.tres" id="5_awxkj"]
 [ext_resource type="PackedScene" uid="uid://drma5gn1cnf46" path="res://scenes/PlayerBus.tscn" id="5_ssutc"]
 
-[node name="TestScene" type="Node2D"]
+[node name="GameplayScene" type="Node2D"]
 
 [node name="EnemySpawner" type="Node" parent="." node_paths=PackedStringArray("target")]
 script = ExtResource("1_0tqum")
@@ -32,6 +32,9 @@ player_resource = ExtResource("5_awxkj")
 movement = NodePath("Player")
 hurtbox = NodePath("Player/HurtBox")
 brush_attack = NodePath("BrushAttack")
+
+[node name="Player" parent="PlayerBus" index="0"]
+position = Vector2(520, 344)
 
 [node name="HurtBox" parent="PlayerBus/Player" index="3"]
 script = ExtResource("3_e7cbr")

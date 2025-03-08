@@ -58,7 +58,7 @@ func _handle_button_action(button: Node2D) -> void:
 	print("Handling button action: ", button.name)
 	if button == start_swipe:
 		print("Start button activated")
-		game_resource.change_state(game_resource.GAME_STATE.IN_GAME)
+		game_resource.change_state(game_resource.GAME_STATE.GAMEPLAY)
 	elif button == options_swipe:
 		print("Options button activated")
 		# Add options menu logic here
