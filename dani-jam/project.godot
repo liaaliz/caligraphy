@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="dani-jam"
-run/main_scene="res://TestScene.tscn"
+run/main_scene="res://GameplayScene.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 

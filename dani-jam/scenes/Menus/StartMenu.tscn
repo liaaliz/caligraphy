@@ -1,11 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://b5qcja11degv3"]
+[gd_scene load_steps=8 format=3 uid="uid://b5qcja11degv3"]
 
 [ext_resource type="FontFile" uid="uid://gbynvip3fg7x" path="res://themes/fonts/cour.ttf" id="1_22yen"]
-[ext_resource type="Script" path="res://code/StartMenuBus.gd" id="1_xng02"]
+[ext_resource type="Script" path="res://code/MenuBus.gd" id="1_xng02"]
 [ext_resource type="FontFile" uid="uid://ddf8xwngn31bs" path="res://themes/fonts/courbd.ttf" id="2_i08pn"]
 [ext_resource type="FontFile" uid="uid://bxcgw0pp65rc8" path="res://themes/fonts/monego-master/Monego/Monego-Regular.otf" id="3_pwnj0"]
 [ext_resource type="Script" path="res://code/SwipeButton.gd" id="4_rxdvr"]
-[ext_resource type="Script" path="res://code/MouseControl.gd" id="5_embtg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yjxt4"]
 size = Vector2(88.18, 103)
@@ -13,7 +12,7 @@ size = Vector2(88.18, 103)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o0831"]
 size = Vector2(109.414, 103)
 
-[node name="StartMenu" type="Control" node_paths=PackedStringArray("options_swipe", "start_swipe", "exit_swipe")]
+[node name="StartMenu" type="Control" node_paths=PackedStringArray("buttons")]
 z_index = -1
 layout_mode = 3
 anchors_preset = 15
@@ -21,14 +20,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 1
+mouse_filter = 2
 script = ExtResource("1_xng02")
-options_swipe = NodePath("MainVBox/VBoxContainer2/RichTextLabel3/Control/OptionsSwipe")
-start_swipe = NodePath("MainVBox/VBoxContainer2/RichTextLabel/Control/StartSwipe")
-exit_swipe = NodePath("MainVBox/VBoxContainer2/RichTextLabel2/Control/ExitSwipe")
-
-[node name="MouseControl" type="Node2D" parent="."]
-script = ExtResource("5_embtg")
+buttons = [NodePath("MainVBox/VBoxContainer2/RichTextLabel/Control/StartSwipe"), NodePath("MainVBox/VBoxContainer2/RichTextLabel3/Control/OptionsSwipe"), NodePath("MainVBox/VBoxContainer2/RichTextLabel2/Control/ExitSwipe")]
 
 [node name="TopPart" type="ColorRect" parent="."]
 z_index = -1
@@ -37,7 +31,7 @@ anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_bottom = -360.0
-mouse_filter = 1
+mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
 [node name="BottomPart" type="ColorRect" parent="."]
@@ -50,7 +44,7 @@ offset_top = 360.0
 offset_bottom = -3.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 1
+mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
 [node name="MainVBox" type="VBoxContainer" parent="."]
@@ -103,11 +97,10 @@ offset_bottom = 0.0529938
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="StartSwipe" type="Node2D" parent="MainVBox/VBoxContainer2/RichTextLabel/Control" node_paths=PackedStringArray("mouse_controller")]
+[node name="StartSwipe" type="Node2D" parent="MainVBox/VBoxContainer2/RichTextLabel/Control"]
 position = Vector2(44, 49.725)
 script = ExtResource("4_rxdvr")
 new_state = 1
-mouse_controller = NodePath("../../../../../MouseControl")
 
 [node name="Start_1" type="Area2D" parent="MainVBox/VBoxContainer2/RichTextLabel/Control/StartSwipe"]
 position = Vector2(0, 2)
@@ -156,12 +149,12 @@ offset_right = 0.179993
 offset_bottom = -0.0300064
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
-[node name="OptionsSwipe" type="Node2D" parent="MainVBox/VBoxContainer2/RichTextLabel3/Control" node_paths=PackedStringArray("mouse_controller")]
+[node name="OptionsSwipe" type="Node2D" parent="MainVBox/VBoxContainer2/RichTextLabel3/Control"]
 scale = Vector2(1.19, 1)
 script = ExtResource("4_rxdvr")
 new_state = null
-mouse_controller = NodePath("../../../../../MouseControl")
 
 [node name="Option_1" type="Area2D" parent="MainVBox/VBoxContainer2/RichTextLabel3/Control/OptionsSwipe"]
 position = Vector2(54.701, 51.5638)
@@ -211,12 +204,12 @@ offset_right = -0.136047
 offset_bottom = -0.0300064
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
-[node name="ExitSwipe" type="Node2D" parent="MainVBox/VBoxContainer2/RichTextLabel2/Control" node_paths=PackedStringArray("mouse_controller")]
+[node name="ExitSwipe" type="Node2D" parent="MainVBox/VBoxContainer2/RichTextLabel2/Control"]
 scale = Vector2(0.76, 1)
 script = ExtResource("4_rxdvr")
 new_state = null
-mouse_controller = NodePath("../../../../../MouseControl")
 
 [node name="Exit_1" type="Area2D" parent="MainVBox/VBoxContainer2/RichTextLabel2/Control/ExitSwipe"]
 position = Vector2(54.701, 51.5638)

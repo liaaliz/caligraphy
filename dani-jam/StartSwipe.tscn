@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3 uid="uid://di2i324v2vgo7"]
+
+[ext_resource type="Script" path="res://code/SwipeButton.gd" id="1_bjelr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yjxt4"]
+size = Vector2(88.18, 103)
+
+[node name="StartSwipe" type="Node2D"]
+position = Vector2(44, 49.725)
+script = ExtResource("1_bjelr")
+new_state = 1
+
+[node name="Start_1" type="Area2D" parent="."]
+position = Vector2(0, 2)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Start_1"]
+shape = SubResource("RectangleShape2D_yjxt4")
+
+[node name="Start_2" type="Area2D" parent="."]
+position = Vector2(89, 2)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Start_2"]
+shape = SubResource("RectangleShape2D_yjxt4")
+
+[node name="Start_3" type="Area2D" parent="."]
+position = Vector2(178, 2)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Start_3"]
+shape = SubResource("RectangleShape2D_yjxt4")

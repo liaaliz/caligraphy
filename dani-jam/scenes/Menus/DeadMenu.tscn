@@ -1,7 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://bli11mquul5is"]
+[gd_scene load_steps=5 format=3 uid="uid://bli11mquul5is"]
 
 [ext_resource type="FontFile" uid="uid://bxcgw0pp65rc8" path="res://themes/fonts/monego-master/Monego/Monego-Regular.otf" id="1_8ywnu"]
 [ext_resource type="FontFile" uid="uid://b4gegxwe3hrrc" path="res://themes/fonts/monego-master/Monego/Monego-Bold.otf" id="2_wd8q3"]
+[ext_resource type="Script" path="res://code/SwipeButton.gd" id="4_0bviu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yjxt4"]
+size = Vector2(88.18, 103)
 
 [node name="DeadMenu" type="Control"]
 layout_mode = 3
@@ -10,6 +14,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 1
@@ -18,6 +23,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="ColorRect" type="ColorRect" parent="Control"]
 layout_mode = 1
@@ -26,6 +32,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Control"]
@@ -35,14 +42,17 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="PaddingUP" type="Control" parent="Control/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+mouse_filter = 2
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Control/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+mouse_filter = 2
 theme_override_fonts/mono_font = ExtResource("1_8ywnu")
 theme_override_fonts/bold_font = ExtResource("2_wd8q3")
 bbcode_enabled = true
@@ -62,9 +72,34 @@ text = "[wave=10][center][font_size=10][b][shake =100]
     `' ~·- .,. -·~ ´                       `'´       °       '`~·- . , . -·'´              `' ~·- .,. -·~ ´             
            '                                  ‘                                                     '                       "
 
+[node name="StartSwipe" type="Node2D" parent="Control/VBoxContainer/RichTextLabel"]
+position = Vector2(284, 111)
+scale = Vector2(3, 2)
+script = ExtResource("4_0bviu")
+new_state = 1
+
+[node name="Start_1" type="Area2D" parent="Control/VBoxContainer/RichTextLabel/StartSwipe"]
+position = Vector2(0, 2)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Control/VBoxContainer/RichTextLabel/StartSwipe/Start_1"]
+shape = SubResource("RectangleShape2D_yjxt4")
+
+[node name="Start_2" type="Area2D" parent="Control/VBoxContainer/RichTextLabel/StartSwipe"]
+position = Vector2(89, 2)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Control/VBoxContainer/RichTextLabel/StartSwipe/Start_2"]
+shape = SubResource("RectangleShape2D_yjxt4")
+
+[node name="Start_3" type="Area2D" parent="Control/VBoxContainer/RichTextLabel/StartSwipe"]
+position = Vector2(178, 2)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Control/VBoxContainer/RichTextLabel/StartSwipe/Start_3"]
+shape = SubResource("RectangleShape2D_yjxt4")
+
 [node name="RestartBlock" type="Control" parent="Control/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+mouse_filter = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Control/VBoxContainer/RestartBlock"]
 layout_mode = 1
@@ -73,14 +108,17 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="PaddingUp" type="Control" parent="Control/VBoxContainer/RestartBlock/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+mouse_filter = 2
 
 [node name="RestartText" type="RichTextLabel" parent="Control/VBoxContainer/RestartBlock/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+mouse_filter = 2
 theme_override_fonts/normal_font = ExtResource("1_8ywnu")
 bbcode_enabled = true
 text = "[shake][center][font_size=20]cross out to restart"
@@ -88,3 +126,4 @@ text = "[shake][center][font_size=20]cross out to restart"
 [node name="PaddingDown" type="Control" parent="Control/VBoxContainer/RestartBlock/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+mouse_filter = 2

@@ -1,9 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://dx4rhrkkqt48x"]
+[gd_scene load_steps=3 format=3 uid="uid://dx4rhrkkqt48x"]
 
 [ext_resource type="Script" path="res://code/SceneSpawner.gd" id="1_gkyxl"]
+[ext_resource type="Script" path="res://code/newMouseControl.gd" id="2_bqi75"]
 
 [node name="ScreenSpawner" type="Node"]
 script = ExtResource("1_gkyxl")
+
+[node name="MousePosition" type="Node2D" parent="."]
+script = ExtResource("2_bqi75")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = -1

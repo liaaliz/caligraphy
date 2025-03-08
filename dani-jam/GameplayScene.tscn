@@ -1,0 +1,45 @@
+[gd_scene load_steps=9 format=3 uid="uid://btnola12cpjxf"]
+
+[ext_resource type="Script" path="res://code/EnemySpawner.gd" id="1_0cjup"]
+[ext_resource type="PackedScene" uid="uid://dipp6fackfjms" path="res://scenes/Enemies/BookEnemy.tscn" id="2_3whal"]
+[ext_resource type="PackedScene" uid="uid://cuww5o57uxtul" path="res://scenes/Enemies/GhostEnemy.tscn" id="3_uebfv"]
+[ext_resource type="Texture2D" uid="uid://b63428sfp15m1" path="res://art/texture_07.png" id="4_rur8e"]
+[ext_resource type="PackedScene" uid="uid://drma5gn1cnf46" path="res://scenes/PlayerBus.tscn" id="5_wil0i"]
+[ext_resource type="Script" path="res://code/player/PlayerBus.gd" id="6_bkesr"]
+[ext_resource type="Resource" uid="uid://drm5bfoqbbcvv" path="res://code/resources/PlayeResource.tres" id="7_fh5dw"]
+[ext_resource type="Script" path="res://code/player/HurtBox.gd" id="8_00g55"]
+
+[node name="GameplayScene" type="Node2D"]
+
+[node name="EnemySpawner" type="Node" parent="." node_paths=PackedStringArray("target")]
+script = ExtResource("1_0cjup")
+spawn_interval = 2.0
+target = NodePath("../PlayerBus/Player")
+enemies_to_spawn = Array[PackedScene]([ExtResource("2_3whal"), ExtResource("3_uebfv")])
+
+[node name="CheckeredBackground" type="Polygon2D" parent="."]
+z_index = -1
+texture_repeat = 2
+position = Vector2(-104, 112)
+scale = Vector2(0.123047, 0.123047)
+color = Color(0.956863, 0.811765, 0.552941, 1)
+texture = ExtResource("4_rur8e")
+polygon = PackedVector2Array(-520.127, -1950.48, 10857.7, -1950.48, 10857.7, 5916.44, -520.127, 5916.44)
+
+[node name="PlayerBus" parent="." node_paths=PackedStringArray("movement", "hurtbox", "brush_attack") instance=ExtResource("5_wil0i")]
+script = ExtResource("6_bkesr")
+player_resource = ExtResource("7_fh5dw")
+movement = NodePath("Player")
+hurtbox = NodePath("Player/HurtBox")
+brush_attack = NodePath("BrushAttack")
+
+[node name="Player" parent="PlayerBus" index="0"]
+position = Vector2(520, 344)
+
+[node name="HurtBox" parent="PlayerBus/Player" index="3"]
+script = ExtResource("8_00g55")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+
+[editable path="PlayerBus"]
